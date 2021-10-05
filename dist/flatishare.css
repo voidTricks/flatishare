@@ -1,0 +1,143 @@
+/**************************************************************************************
+Title: FlatiShare
+Description: A simple social sharing plugin in javascript
+Developer URI: https://www.voidtricks.com
+Documentation URI: https://www.voidtricks.com/flatishare/
+
+**************************************************************************************/
+
+.FlatiShare{
+    font-weight: bold;
+    color: #7c7c7c;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+    position: relative;
+}
+
+.FlatiShare-trigger{
+    width: 24px;
+    height: 24px;
+    background: transparent url('icons/share.svg') no-repeat center center;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: all 0.4s ease;
+}
+.FlatiShare-close{
+    width: 24px;
+    height: 24px;
+    background: transparent url('icons/close.svg') no-repeat center center;
+    cursor: pointer;
+    transform: rotate(90deg);
+    transition: all 0.4s ease;
+}
+.FlatiShare-icons{
+    display: flex;
+    align-items: center;
+    left: 34px;
+    position: absolute;
+    opacity: 1;
+    width: auto;
+    transition: all 0.4s ease;
+}
+.top .FlatiShare-icons{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: -3px;
+    bottom: 34px;
+}
+.right .FlatiShare-icons{
+    left: inherit;
+    right: 34px;
+}
+.bottom .FlatiShare-icons{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: -3px;
+    top: 34px;
+}
+
+.FlatiShare-icons.hide{
+    opacity: 0;
+    width: 0;
+    left: 0;
+    transition: all 0.4s ease;
+}
+.top .FlatiShare-icons.hide{
+    left: inherit;
+    bottom: 0;
+  }
+  .right .FlatiShare-icons.hide{
+   left: inherit;
+   bottom: inherit;
+    right: 0;
+  }
+  .bottom .FlatiShare-icons.hide{
+    left: inherit;
+    top: 0;
+  }
+
+.FlatiShare-icons.alone{
+    left: 0 !important;
+}
+
+.FlatiShare-icons .i{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-size: 70% !important;
+    margin-left: 5px;
+    border-radius: 2px;
+}
+.top .FlatiShare-icons .i{
+    margin-left: 0;
+    margin-bottom: 5px;
+}
+.right .FlatiShare-icons .i{
+    margin-left: 0;
+    margin-right: 5px;
+}
+.bottom .FlatiShare-icons .i{
+    margin-left: 0;
+    margin-top: 5px;
+}
+
+.rounded .FlatiShare-icons .i{
+    border-radius: 50%;
+    background-size: 55% !important;
+}
+
+.FlatiShare .facebook{
+    background: #4267B2 url('icons/facebook.svg') no-repeat center center;
+}
+.FlatiShare .twitter{
+    background: #1DA1F2 url('icons/twitter.svg') no-repeat center center;
+}
+.FlatiShare .linkedin{
+    background: #2867B2 url('icons/linkedin.svg') no-repeat center center;
+}
+.FlatiShare .reddit{
+    background: #FF5700 url('icons/reddit.svg') no-repeat center center;
+}
+.FlatiShare .whatsapp{
+    background: #25D366 url('icons/whatsapp.svg') no-repeat center center;
+}
+
+.FlatiShare.sunshine .i{
+    background-color: #ff8d00;
+}
+.FlatiShare.clouds .i{
+    background-color: #bbbbbb;
+}
+.FlatiShare.ocean .i{
+    background-color: #6fa2ff;
+}
+.FlatiShare.titan .i{
+    background-color: #6ac3bf;
+}
+.FlatiShare.voidTricks .i{
+    background-color: #ef4136;
+}

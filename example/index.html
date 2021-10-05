@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FlatiShare: a simple social sharing plugin (Live Demo)</title>
+    <meta name="description" content="This is a live demo page for the javascript library flatishare which lets you show android style toast notifications in your page.">
+    <link rel="shortcut icon" href="https://voidtricks.com/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../dist/flatishare.css">
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="wrap clear">
+            <a href="https://voidtricks.com"><img src="https://voidtricks.com/assets/img/voidtricks-logo.png" alt="void Tricks logo" class="fl logo"></a>
+            <div class="menu clear fr">
+                <a href="https://github.com/voidTricks/flatishare" class="fr"><button class="btn downBtn">Download</button></a>
+                <a href="https://voidtricks.com/flatishare/" class="fr"><button class="btn docBtn">Docs</button></a>
+            </div>
+        </div>
+    </header>
+    <div class="voidDemo ">
+        <div class="wrap clear">
+                <h1>FlatiShare: a simple social sharing plugin  (Live Demo)</h1>
+                <h2 class="note">Change settings and click on share icon below to test the plugin in action</h2>
+                <div class="playarea mt-2">
+                <div class="FlatiShare" ></div>
+            </div>
+                <h3>Settings</h3>
+            <div class="clear">
+                <div class="float-group w33">
+                    <p>Theme</p>
+                    <select name="" id="themes" onchange="themechange(this.value)">
+                        <option value="">Default</option>
+                        <option value="sunshine">sunshine</option>
+                        <option value="clouds">clouds</option>
+                        <option value="ocean">ocean</option>
+                        <option value="titan">titan</option>
+                        <option value="voidTricks">voidTricks</option>
+                    </select>
+                </div>
+                <div class="float-group w33">
+                        <p>Slide To</p>
+                        <select name="" id="ani" onchange="slidechange(this.value)">
+                            <option value="">left</option>
+                            <option value="right">right</option>
+                            <option value="top">top</option>
+                            <option value="bottom">bottom</option>
+                        </select>
+                    </div>
+                                <div class="float-group w33">
+                    <p>Triggerable</p>
+                    <select name="" id="shape" onchange="triggerchange(this.value)">
+                        <option value="">true</option>
+                        <option value="false">false</option>
+                    </select>
+                </div>
+                   <div class="float-group w33">
+                    <p>Icon Style</p>
+                    <select name="" id="shape" onchange="iconstylechange(this.value)">
+                        <option value="">square</option>
+                        <option value="rounded">rounded</option>
+                    </select>
+                </div>
+                </div>
+                <br>
+                <div class="">
+                <p>Custom URL</p>
+                <input type="text" placeholder="eg: http://example.com" onkeyup="urlchange(this.value)" />
+                </div>
+    
+            
+        </div>
+
+        <div class="wrap">
+            <h3>Sample Code</h3>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;dist/flatishare.min.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;</code></pre>       
+<pre><code id="code"></code></pre>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;dist/flatishare.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>       
+                
+        </div>
+        
+    </div>
+        
+    <script src="../dist/flatishare.js"></script>
+    <script>
+        var el, el2, theme='', slide = '', trigger = '', icon = '', url = '';
+   
+        (function(){
+            el = document.querySelector(".FlatiShare");
+            el2 = document.getElementById("code");
+            updateclass();
+        })();
+
+        function slidechange(val){
+            console.log(val)
+            slide = val;
+            updateclass();
+        }
+
+        function themechange(val){
+            console.log(val)
+            theme = val;
+            updateclass();
+        }
+
+        function triggerchange(val){
+            trigger = val;
+            updateclass();
+        }
+
+        function iconstylechange(val){
+            console.log(val)
+            icon = val;
+            updateclass();
+        }
+
+        function urlchange(val){
+            console.log(val)
+            url = val;
+            updateclass();
+        }
+
+        function updateclass(){
+            var classes = "FlatiShare"+(theme == '' ? '' : " "+theme)+(slide == '' ? '' : " "+slide)+(icon == '' ? '' : " "+icon);
+            el.classList = classes;
+            var u = '', t='';
+            if(url != ''){
+                el.setAttribute("data-url", url);
+                u = ' data-url="'+url+'"';
+            }else{
+                el.removeAttribute("data-url");
+            }
+            if(trigger == 'false'){
+                el.setAttribute("data-trigger", trigger);
+                t = ' data-triger="'+trigger+'"';
+                el.innerHTML='';
+                FlatiShare();
+            }else{
+                el.removeAttribute("data-trigger");
+                el.innerHTML='';
+                 FlatiShare();
+            }
+            el2.innerText = '<div class="'+classes+'"'+u+t+'></div>';
+        }
+    </script>
+
+</body>
+</html>
